@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Candidate Profile</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static "authorities/fonts/material-icon/css/material-design-iconic-font.min.css"%}"">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static "authorities/css/style.css"%}"">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Candidate Details</h2>
+                        <form  class="register-form" >
+
+
+
+                                                     <div class="form-group">
+
+                                                 <label ><i class="zmdi zmdi-font"></i></label>
+                                                         <input type="text"  name="name"  value="{{can_details.user_id.name}}" readonly >
+                                                </div>
+                                                <div class="form-group">
+
+                                                 <label ><i class="zmdi zmdi-account-circle"></i></label>
+                                                         <input type="text"  name="username"  value="{{can_details.user_id.username}}" readonly >
+                                                </div>
+
+
+                                                <div class="form-group">
+
+                                                    <label for="pass"><i class="zmdi zmdi-plus-circle"></i></label>
+                                                    <input type="text"   value="{{can_details.user_id.add_no}}"  readonly>
+                                                </div>
+
+                                                <div class="form-group">
+
+
+                                                    <label for="pass"><i class="zmdi zmdi-male-female"></i></label>
+                                                    <input type="text"  value="{{can_details.user_id.gender}}" readonly >
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                                    <input type="text"   id="voter_email" value="{{can_details.user_id.email}}" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label for="pass"><i class="zmdi zmdi-phone"></i></label>
+                                                    <input type="text"    value="{{can_details.user_id.phone}}" readonly >
+                                                </div>
+                                                <div class="form-group">
+
+
+                                                    <label for="pass"><i class="zmdi zmdi-calendar-alt"></i></label>
+                                                    <input type="text"  value="{{can_details.user_id.dob}}" readonly >
+                                                </div>
+                                                <div class="form-group">
+
+                                                     <label for="email"><i class="zmdi zmdi-satellite"></i></label>
+                                                     <input type="text"  value="{{can_details.user_id.caste}}" readonly >
+                                                </div>
+                                                 <div class="form-group">
+
+                                                     <label for="email"><i class="zmdi zmdi-case"></i></label>
+
+                                                     <input type="text"  value="{{can_details.job}}" readonly >
+                                                </div>
+                                                <div class="form-group">
+                                                     <span id="sp3" style="color: red;"></span>
+                                                     <label for="email"><i class="zmdi zmdi-flag"></i></label>
+
+                                                    <input type="text"  value="{{can_details.party_name}}" readonly >
+                                                </div>
+
+
+
+
+
+                                                <div class="form-group">
+
+                                                    <textarea placeholder="{{can_details.user_id.address}}" cols="30" rows="10" readonly></textarea>
+
+                                                </div>
+                                     <!--    <div class="form-group form-button">
+
+                                <a href="{% url 'admin_home' %}"> <input type="button"  style="margin-left:30px;"  class="form-submit" value="Back "/></a>
+
+                            </div>-->
+
+
+
+
+
+                           
+                            
+
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{{can_details.user_id.voter_img.url}}" alt="sing up image"></figure>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static "authorities/vendor/jquery/jquery.min.js"%}""></script>
+    <script src="{% static "authorities/js/main.js"%}""></script>
+
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

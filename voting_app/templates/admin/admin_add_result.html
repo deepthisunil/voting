@@ -1,0 +1,204 @@
+<html lang="en">
+{% extends 'admin/admin_homepage.html' %}
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Result </title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Result Details</h1>
+            
+        </div>
+        
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="card shadow mb-4">
+                
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th colspan="5"> Result Table</th>
+                                </tr>
+                                <tr>
+
+
+
+                                    <th >Candidate Name</th>
+                                                
+                                    <th>PartyName</th>
+                                    <th>Number Of Votes</th>
+                                            <th >Action</th>
+
+
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+
+                                    <tr>
+
+
+
+
+                                            <td> <span id="sp1" style="color: red;"></span>
+                                                <label>Candidate Name</label>
+                                                <select name="cand_name" id="can_name">
+                                                <option value="" > Select </option>
+                                                    {% for x in can_details %}
+                                                <option value="{{x.name}}" > {{x.name}} </option>
+                                                {% endfor %}
+                                                </select></td>
+                                            <td> <span id="sp2" style="color: red;"></span>
+                                                <label>Party Name</label>
+
+
+                                                <select name="p_name" id="party">
+                                                     <option value="" > Select </option>
+                                                     {% for x in can_details %}
+                                                <option value="{{x.party_name}}" > {{x.party_name}} </option>
+                                                {% endfor %}
+                                                </select></td>
+                                            <td><span id="sp3" style="color: red;"></span>
+                                                <input type="text" name="count" id="vote_amt"></td>
+                                                
+                                            <td><button type="submit"  class="btn btn-success" onclick="return check()" name="update_id" >Update</button> </td>
+
+
+
+                                    </tr>
+                                {% for y in result_details %}
+
+                                    <tr>
+
+                                        <td>{{y.can_name}}</td>
+                                        <td >{{y.party_name}}</td>
+                                         <td >{{y.vote_count}}</td>
+
+                                        <td><button type="submit"  class="btn btn-danger" onclick="return show_alert()" value="{{y.id}}" name="remove_id" >Remove</button> </td>
+
+
+                                    </tr>
+                                {% endfor %}
+
+                             </form>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+
+
+
+            
+            
+
+            
+
+           
+        </div>
+
+        
+
+       
+
+    </div>
+    <script>
+        function check()
+        {
+            var get_name=document.getElementById('can_name').value;
+            var get_party=document.getElementById('party').value;
+            var get_amount=document.getElementById('vote_amt').value;
+
+            if (get_name == "")
+            {
+                document.getElementById("sp1").innerHTML=" Name   required!";
+                return false;
+            }
+             if (get_party == "")
+            {
+                document.getElementById("sp2").innerHTML=" Party Name  required!";
+                return false;
+            }
+             if (get_amount == "")
+            {
+                document.getElementById("sp3").innerHTML=" Total Vote   required!";
+                return false;
+            }
+            if (isNaN(get_amount))
+            {
+                document.getElementById("sp3").innerHTML=" Enter numbers only!";
+                return false;
+            }
+
+
+
+
+
+
+
+        }
+
+        function clearmsg(sp)
+    {
+
+        document.getElementById(sp).innerHTML="";
+    }
+    </script>
+     <script>
+        function show_alert()
+        {
+            if(!confirm("Do you really want to remove it?"))
+            {
+                return false;
+            }
+
+            this.form.submit();
+        }
+    </script>
+
+
+    {% endblock %}
+
+    
+
+   
+    
+</body>
+</html>

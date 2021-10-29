@@ -1,0 +1,161 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Contact Form #6</title>
+  </head>
+  <body>
+<!--   <form class="mb-5" method="post" id="contactForm" name="contactForm">-->
+<!--              {% csrf_token %}-->
+<!--               <div class="row">-->
+<!--                  <div class="col-12">-->
+<!--                    <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">-->
+<!--                  <span class="submitting"></span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--  </form>-->
+<!--   {{form.errors}}-->
+
+
+  <div class="content">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+
+
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+
+              <h3 class="heading mb-4">Let's communicate!</h3>
+<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas debitis, fugit natus?</p>-->
+
+              <p><img src="{% static 'images/undraw-contact.svg' %}" alt="Image" class="img-fluid" ></p>
+
+
+            </div>
+            <div class="col-md-6">
+
+<!--              <form class="mb-5" method="post" id="contactForm" name="contactForm">-->
+<!--              {% csrf_token %}-->
+<!--&lt;!&ndash;                <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="col-md-12 form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" class="form-control" name="name" id="name" placeholder="Your name">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="col-md-12 form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" class="form-control" name="email" id="email" placeholder="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="col-md-12 form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div class="row">-->
+<!--                  <div class="col-md-12 form-group">-->
+<!--                    <textarea class="form-control" name="complaint" id="message" cols="30" rows="7" placeholder="Write your message"></textarea>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                  <div class="col-12">-->
+<!--                    <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">-->
+<!--                  <span class="submitting"></span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </form>-->
+<!--        -->
+              <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">ID</th>
+      <th scope="col">COMPLAINTS</th>
+      <th scope="col">NAME</th>
+      <th scope="col">REPLY</th>
+<!--      <th scope="col">ACTION</th>-->
+<!--      <th scope="col">STATUS</th>-->
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+    <tr>
+      <th scope="row"></th>
+      <td>{{i.id}}</td>
+      <td>{{i.complaint}}</td>
+      <td>{{i.sender.name}}</td>
+<!--      <td>-->
+
+<!--        <div class="row">-->
+<!--                  <div class="col-md-19 form-group">-->
+<!--                    <textarea class="form-control" name="complaint" id="message" cols="30" rows="7" placeholder="Write your message"></textarea>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--      </td>-->
+      <td>
+          {% if i.reply %}
+          {{i.reply}}
+          {% else %}
+        <div class="row">
+                  <div class="col-12">
+                    <a href="{% url 'complaint_reply' id=i.id%}"> <input type="submit" value=" Reply" class="btn btn-primary rounded-0 py-2 px-4"></a>
+                  <span class="submitting"></span>
+                  </div>
+                </div>
+          {% endif%}
+      </td>
+
+
+
+    </tr>
+  {% endfor%}
+
+  </tbody>
+</table>
+              <div id="form-message-warning mt-4"></div>
+              <div id="form-message-success">
+                Your message was sent, thank you!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,68 @@
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Online Voting</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+
+                    <div >
+                                {% if messages %}
+                                    <ul class="alert alert-danger">
+                                        {% for message in messages %}
+
+                                                <div style="color: red; font-size:20px;">
+
+                                                   <p>{{ message }}</p>
+
+
+                                                </div>
+
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+
+
+
+
+
+
+
+          <div class="row mt-5">
+
+
+            <div class="col-lg-8 mt-5 mt-lg-0"  style="margin-left:40%;">
+
+              <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_PQxIrX.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
+                <a href="{% url 'home_user' %}"><button type="button" class="btn btn-success" style="margin-left:100px;margin-top:20px;"> Done</button></a>
+
+
+
+            </div>
+
+          </div>
+
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+
+</body>
+</html>

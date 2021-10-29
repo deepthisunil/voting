@@ -1,0 +1,259 @@
+<html lang="en">
+{% extends 'admin/admin_homepage.html' %}
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Schedule </title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Schedule Details</h1>
+            
+        </div>
+        
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="card shadow mb-4">
+                
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th colspan="4"> Nomination Schedule Table</th>
+                                </tr>
+                                <tr>
+
+                                    <th >Start Date</th>
+                                                
+                                    <th>End Date</th>
+                                            <th>Action</th>
+
+
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+
+                                    <tr>
+
+                                        <form action="" method="POST">
+                                            {% csrf_token %}
+                                            <td> <span id="sp1" style="color: red;"></span>
+                                                <input type="Date" name="nm_start_date" id="start" ></td>
+                                            <td> <span id="sp2" style="color: red;"></span>
+                                                <input type="Date" name="nm_end_date" id="end" ></td>
+                                                
+                                            <td><button type="submit"  class="btn btn-success" onclick="return show_alert()" name="update_id" >Update</button> </td>
+
+                                        </form>
+
+                                    </tr>
+
+                                    <tr>
+                                        {% for x in nm_dates %}
+                                        <td>{{x.start_date}}</td>
+                                        <td colspan="2">{{x.end_date}}</td>
+                                        {% endfor %}
+                                    </tr>
+
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-4">
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                    <th colspan="4"> Voting Schedule Table</th>
+                                </tr>
+                                <tr>
+
+                                    <th colspan="2" >Timing</th>
+
+                                    <th>Voting Date</th>
+                                            <th>Action</th>
+
+
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                             <tr>
+
+                                        <form action="" method="POST">
+                                            {% csrf_token %}
+                                            <td>
+                                                <span id="sp3" style="color: red;"></span>
+                                                <label>Starting Time</label>
+                                                <input type="time" name="vt_start_time" id="start_tm" ></td>
+
+                                            <td>
+                                                <span id="sp4" style="color: red;"></span>
+                                                <label>Ending Time</label>
+                                                <input type="time" name="vt_end_time" id="end_tm" ></td>
+
+                                            <td> <span id="sp5" style="color: red;"></span>
+                                                <input type="Date" name="vt_date" id="date_vt" ></td>
+
+                                            <td><button type="submit"  class="btn btn-success" onclick="return show_alert2()" name="update_id2" >Update</button> </td>
+
+                                        </form>
+
+                                    </tr>
+
+                                    <tr>
+                                        {% for x in vt_details %}
+                                        <td>{{x.start_time}}</td>
+                                        <td >{{x.end_time}}</td>
+                                        <td colspan="2" >{{x.voting_date}}</td>
+                                        {% endfor %}
+                                    </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+
+
+
+            
+            
+
+            
+
+           
+        </div>
+
+        
+
+       
+
+    </div>
+    <script>
+        function show_alert()
+        {
+            var get_s_date=document.getElementById('start').value;
+            var get_e_date=document.getElementById('end').value;
+            var today=new Date();
+            var s_date= new Date(get_s_date)
+             var e_date= new Date(get_e_date)
+            if (get_s_date == "")
+            {
+                document.getElementById("sp1").innerHTML=" date   required!";
+                return false;
+            }
+             if (get_e_date == "")
+            {
+                document.getElementById("sp2").innerHTML=" date   required!";
+                return false;
+            }
+
+
+            if (s_date >= e_date )
+             {
+                document.getElementById("sp1").innerHTML=" date   is not Valid! ";
+                return false;
+            }
+
+
+            if (e_date <= s_date )
+             {
+                document.getElementById("sp2").innerHTML=" date   is not Valid! ";
+                return false;
+            }
+
+        }
+
+        function clearmsg(sp)
+    {
+
+        document.getElementById(sp).innerHTML="";
+    }
+    </script>
+     <script>
+        function show_alert2()
+        {
+            var get_s_time=document.getElementById('start_tm').value;
+            var get_e_time=document.getElementById('end_tm').value;
+            var get_date=document.getElementById('date_vt').value;
+            var today=new Date();
+            var v_date= new Date(get_date)
+
+            if (get_s_time == "")
+            {
+                document.getElementById("sp3").innerHTML=" time   required!";
+                return false;
+            }
+             if (get_e_time == "")
+            {
+                document.getElementById("sp4").innerHTML=" time  required!";
+                return false;
+            }
+
+            if (get_date == "")
+            {
+                document.getElementById("sp5").innerHTML=" Date  required!";
+                return false;
+            }
+
+
+
+
+
+        }
+
+        function clearmsg(sp)
+    {
+
+        document.getElementById(sp).innerHTML="";
+    }
+    </script>
+
+
+    {% endblock %}
+
+    
+
+   
+    
+</body>
+</html>

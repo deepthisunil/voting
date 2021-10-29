@@ -1,0 +1,137 @@
+<html lang="en">
+{% extends 'admin/admin_homepage.html' %}
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Voters </title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Voters Details</h1>
+            
+        </div>
+        
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="card shadow mb-4">
+                
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Name</th>
+                                    <th>Photo</th>
+                                                
+                                    <th>Date Of Birth</th>
+                                                
+                                    <th>Gender</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                               
+                                    <th colspan="2">Update</th>
+                                   
+                                    
+                                    <th >Action</th>
+
+                                    <th>Status</th>
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for x in voter_details %}
+                                    <tr>
+                                        <td>{{forloop.counter|add:0}}</td>
+                                        <td>{{x.name}}</td>
+                                        <td> <img src="{{x.voter_img.url}}" width="100px" height="100px" class="rounded" alt="Symbol"> </td>
+
+                                        <td>{{x.dob}}</td>
+                                        <td>{{x.gender}}</td>
+                                        <td>{{x.email}}</td>
+                                        <td>{{x.phone}}</td>
+                                        <form action="" method="POST">
+                                            {% csrf_token %}
+                                            <td><select name="update" id="">
+                                                <option > Select </option>
+                                                <option > Approved </option>
+                                                <option > Not Approved</option>
+                                                </select>
+                                            </td>
+                                                
+                                            <td><button type="submit"  class="btn btn-success" name="update_id" value="{{x.id}}">Update</button> </td>
+                                            <td><button type="submit"  class="btn btn-danger" onclick="return show_alert()" name="remove_id" value="{{x.id}}">Remove</button> </td>
+                                        </form>
+                                            <td>{{x.status}}</td>
+                                    </tr>
+                                {% endfor %}
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+
+
+
+            
+            
+
+            
+
+           
+        </div>
+
+        
+
+       
+
+    </div>
+    <script>
+        function show_alert()
+        {
+            if(!confirm("Do you really want to remove it?")) 
+            {
+                return false;
+            }
+            
+            this.form.submit();
+        }
+    </script>
+
+    {% endblock %}
+
+    
+
+   
+    
+</body>
+</html>
